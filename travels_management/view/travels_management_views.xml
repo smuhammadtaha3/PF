@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <!-- Form View -->
+        <record id="view_travels_management_form" model="ir.ui.view">
+            <field name="name">travels.management.form</field>
+            <field name="model">travels.management</field>
+            <field name="arch" type="xml">
+                <form string="Travels Management">
+                    <group>
+                        <button name="send_email_confirmation" string="Send Email" data-hotkey="m" type="object"/>
+                    </group>
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="email" />
+                            <field name="booking_reference" />
+                            <field name="partner_id" />
+                            <field name="product_id" />
+                            <field name="company_id" />
+                            <field name="no_of_passengers" />
+                            <field name="booking_date" />
+                            <!-- </button> -->
+                            <button name="action_confirm" type="object" string="Confirm" class="btn-primary" 
+                            condition="{'invisible': [('state', '!=', 'draft')]}" />
+                        </group>
+                    </sheet>
+                    <field name="state" widget="statusbar" />
+                </form>
+            </field>
+        </record>
+        <!-- List View -->
+        <record id="travels_management_view_list" model="ir.ui.view">
+            <field name="name">travels.management.list</field>
+            <field name="model">travels.management</field>
+            <field name="type">list</field>
+            <field name="arch" type="xml">
+                <list string="Travels">
+                    <field name="booking_reference" string="Booking Reference" />
+                    <field name="partner_id" string="Customer" readonly="1" />
+                    <field name="booking_date" widget="date" />
+                    <field name="state" optional="hide" />
+                    <field name="company_id" />
+                </list>
+            </field>
+        </record>
+        <!-- Action Window -->
+        <record id="travels_management_action" model="ir.actions.act_window">
+            <field name="name">Travels</field>
+            <field name="res_model">travels.management</field>
+            <field name="view_mode">list,form</field>
+            <field name="view_id" ref="travels_management_view_list" />
+        </record>
+        <!-- Menu Items -->
+        <menuitem id="travels_management_menu" name="Travels Management" sequence="10" />
+        <menuitem id="travels_management_submenu" name="Travels" parent="travels_management_menu" action="travels_management_action" />
+    </data>
+</odoo>
+
+
+<!-- Action is not done. 
+
+So I am quite sure why you are so boring in my life. 
+
+I want to be successful in my life. 
+
+But today's success lies in money due to human sickness.
+
+Now I want to do a lot of work, so 
+
+I can achieve today's successful life. -->

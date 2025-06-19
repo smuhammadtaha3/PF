@@ -1,0 +1,63 @@
+<!-- <odoo>
+    <data noupdate="1">
+        <record id="email_template_travel_confirmation" model="mail.template">
+            <field name="name">Travel Booking Confirmation</field>
+            <field name="model_id" ref="model_travels_management"/>
+            <field name="email_from">${(object.company_id.email or 'taha771871@gmail.com')}</field>
+            <field name="subject">Booking Confirmation - ${object.booking_reference}</field>
+            <field name="email_to">${(object.email or 'taha771871@gmail.com')}</field>
+            <field name="body_html">
+                <![CDATA[
+                <p>Dear ${object.name},</p>
+                <p>Your travel booking with reference <strong>${object.booking_reference}</strong> has been confirmed.</p>
+                <p>Booking Details:</p>
+                <ul>
+                    <li>Traveler Name: ${object.name}</li>
+                    <li>Number of Passengers: ${object.no_of_passengers}</li>
+                    <li>Booking Date: ${object.booking_date}</li>
+                </ul>
+                <p>Thank you for choosing us!</p>
+                <p>Best Regards,<br/>${object.company_id.name}</p>
+                ]]>
+            </field>
+        </record>
+    </data>
+</odoo> -->
+
+<odoo>
+    <data>
+        <record id="email_template_travel_confirmation" model="mail.template">
+            <field name="name">Travel Booking Confirmation</field>
+            <field name="subject">Traveller Record Created Successfully</field>
+            <field name="model_id" ref="model_travels_management"/>
+            <field name="email_from">${(object.company_id.email or 'info@example.com')|safe}</field>
+            <field name="email_to">${object.email|safe}</field>
+            <field name="body_html"><![CDATA[
+            {{ object.name }}
+                <div style="font-family: Arial, sans-serif; background-color: #f8f9fa; padding: 20px;">
+                    <table align="center" width="100%" style="max-width: 600px; background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                        <tr>
+                            <td style="text-align: center; padding: 10px; border-bottom: 2px solid #007bff;">
+                                <h2 style="color: #007bff; margin: 0;">Travellers Management System</h2>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 20px;">
+                                {{ object.name }}
+                                <p style="font-size: 14px; color: #555;">We are pleased to inform you that your Travelling record has been created successfully.</p>
+                                <p style="font-size: 14px; color: #555;">If you have any questions or need further assistance, please feel free to contact us.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; padding: 15px; font-size: 12px; color: #777; border-top: 1px solid #ddd;">
+                                <p style="margin: 0;">Best Regards,</p>
+                                <p style="margin: 0; font-weight: bold;">Travels Management Team</p>
+                                <p style="margin: 0;">Contact: support@example.com | +123 456 789</p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            ]]></field>
+        </record>
+    </data>
+</odoo>
