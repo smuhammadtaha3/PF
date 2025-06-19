@@ -1,0 +1,4 @@
+/* Add your custom CSS rules here */
+.page {
+    font-family: Arial, sans-serif;
+}
