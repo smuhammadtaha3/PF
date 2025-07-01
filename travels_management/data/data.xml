@@ -1,9 +1,0 @@
-<odoo>
-    <data noupdate="1">
-        <!-- Define Model for Travels Management -->
-        <record id="model_travels_management" model="ir.model">
-            <field name="name">Travels Management</field>
-            <field name="model">travels.management</field>
-        </record>
-    </data>
-</odoo>
